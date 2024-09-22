@@ -1,4 +1,5 @@
 @extends('index')
+
 @section('content')
     <main class="main-content position-relative border-radius-lg">
         <div class="container mt-5">
@@ -21,7 +22,7 @@
                                 <td>{{ $template->name }}</td>
                                 <td>
                                     <a href="{{ route('templates.edit', $template->id) }}" class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('templates.destroy', $template->id) }}" method="POST" style="display:inline;">
+                                    <form action="{{ route('templates.destroy', $template->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
@@ -35,4 +36,10 @@
             </div>
         </div>
     </main>
+
+    <script>
+        function confirmDelete() {
+            return confirm('Anda yakin ingin menghapus template ini?');
+        }
+    </script>
 @endsection
