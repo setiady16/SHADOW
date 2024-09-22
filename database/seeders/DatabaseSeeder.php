@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
 
         // Jalankan seeder untuk tabel templates
         $this->call(TemplatesTableSeeder::class);
+
+        // Jalankan seeder untuk tabel generated_letters
+        $this->call(GeneratedLettersTableSeeder::class);
     }
 }

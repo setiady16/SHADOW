@@ -20,9 +20,9 @@ class CreateLettersTable extends Migration
             $table->string('title');
             $table->timestamps();
 
-            // Foreign key constraints
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('template_id')->references('id')->on('templates')->onDelete('cascade');
+//            // Foreign key constraints
+//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+//            $table->foreign('template_id')->references('id')->on('templates')->onDelete('cascade');
         });
     }
 

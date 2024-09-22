@@ -11,7 +11,7 @@
                     <table class="table table-striped table-hover text-center align-middle">
                         <thead class="bg-light">
                         <tr>
-                            <th>ID</th>
+                            <th>NO</th>
                             <th>Nama Pengguna</th>
                             <th>Email</th>
                             <th>Peran</th>
@@ -19,22 +19,25 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @php
+                            $no = 0;
+                        @endphp
                         @foreach($users as $user)
                             <tr>
-                                <td>{{ $user->id }}</td>
+                                <td>{{ ++$no }}</td>
                                 <td>{{ $user->username }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                <span class="badge {{ $user->role == 'admin' ? 'bg-success' : 'bg-secondary' }}">
-                                    {{ ucfirst($user->role) }}
-                                </span>
+                                    <span class="badge {{ $user->role == 'admin' ? 'bg-success' : 'bg-secondary' }}">
+                                        {{ ucfirst($user->role) }}
+                                    </span>
                                 </td>
                                 <td>
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                     <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus pengguna ini?')">Hapus</button>
                                     </form>
                                 </td>
                             </tr>

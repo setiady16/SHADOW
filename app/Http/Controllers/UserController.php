@@ -38,14 +38,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request
-        $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
-            'role' => 'nullable|string'
-        ]);
-
         // Create a new user
         User::create([
             'username' => $request->username,
@@ -93,7 +85,7 @@ class UserController extends Controller
         $request->validate([
             'username' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'password' => 'nullable|string|min:8',
+            'password' => 'nullable|string|min:3',
             'role' => 'nullable|string'
         ]);
 
@@ -104,7 +96,7 @@ class UserController extends Controller
             'password' => $request->password ? Hash::make($request->password) : $user->password,
             'role' => $request->role ?? $user->role,
         ]);
-
+        $user->save();
         // Redirect to the index page with a success message
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }

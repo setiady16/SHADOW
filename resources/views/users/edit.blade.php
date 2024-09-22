@@ -1,31 +1,50 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
 @section('content')
-    <div class="container">
-        <h1>Edit Pengguna</h1>
-        <form action="{{ route('users.update', $user->id) }}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="form-group">
-                <label for="name">Nama</label>
-                <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h1 class="card-title">Edit Pengguna</h1>
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="form-control" value="{{ $user->email }}" required>
+            <div class="card-body">
+                <form action="{{ route('users.update', $user->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+
+                    <!-- Username -->
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" value="{{ $user->username }}" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" required>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter new password" required>
+                    </div>
+
+                    <!-- Role -->
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Peran</label>
+                        <select class="form-select" id="role" name="role" required>
+                            <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
+                            <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                        </select>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-flex">
+                        <button type="submit" class="btn btn-success me-2">Update</button>
+                        <a href="{{ route('users.index') }}" class="btn btn-outline-secondary">Kembali</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="password">Password (Kosongkan jika tidak diubah)</label>
-                <input type="password" name="password" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="role">Peran</label>
-                <select name="role" class="form-control">
-                    <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
-                    <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Update</button>
-        </form>
+        </div>
     </div>
 @endsection
