@@ -10,13 +10,13 @@
                 <div class="card-body">
                     <table class="table table-striped table-hover text-center align-middle">
                         <thead class="bg-light">
-                        <tr>
-                            <th>NO</th>
-                            <th>Nama Pengguna</th>
-                            <th>Email</th>
-                            <th>Peran</th>
-                            <th>Aksi</th>
-                        </tr>
+                            <tr>
+                                <th>NO</th>
+                                <th>Nama Pengguna</th>
+                                <th>Email</th>
+                                <th>Peran</th>
+                                <th>Aksi</th>
+                            </tr>
                         </thead>
                         <tbody>
                         @php

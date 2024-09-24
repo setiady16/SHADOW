@@ -7,32 +7,34 @@
                 <div class="card-header bg-primary text-white">
                     <h1>Templates List</h1>
                     <a href="{{ route('templates.create') }}" class="btn btn-light float-right">Add New Template</a>
-                    <table class="table mt-3">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($templates as $template)
-                            <tr>
-                                <td>{{ $template->id }}</td>
-                                <td>{{ $template->name }}</td>
-                                <td>
-                                    <a href="{{ route('templates.edit', $template->id) }}" class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('templates.destroy', $template->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
                 </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-hover text-center align-middle">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($templates as $template)
+                                    <tr>
+                                        <td>{{ $template->id }}</td>
+                                        <td>{{ $template->name }}</td>
+                                        <td>
+                                            <a href="{{ route('templates.edit', $template->id) }}" class="btn btn-warning">Edit</a>
+                                            <form action="{{ route('templates.destroy', $template->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                        </table>
+                    </div>
             </div>
         </div>
     </main>

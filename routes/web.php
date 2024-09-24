@@ -7,17 +7,18 @@ use App\Http\Controllers\LetterController;
 use App\Http\Controllers\GeneratedLetterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\KategoriController; // Import KategoriController
 
 /*
 |----------------------------------------------------------------------
-// Web Routes
+| Web Routes
 |----------------------------------------------------------------------
-// Here is where you can register web routes for your application.
-// These routes are loaded by the RouteServiceProvider within a group which
-// contains the "web" middleware group. Now create something great!
-// Default route to welcome page
+| Here is where you can register web routes for your application.
+| These routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 */
 
+// Default route to welcome page
 Route::get('/', function () {
     return view('index');
 })->name('index');
@@ -27,22 +28,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard.index');
 
-// Resource routes for users, templates, letters, and generated_letters
+// Resource routes for users, templates, letters, generated_letters, and categories
 Route::resource('users', UserController::class);
 Route::resource('templates', TemplateController::class);
 Route::resource('letters', LetterController::class);
 Route::resource('generated_letters', GeneratedLetterController::class);
+Route::resource('kategori', KategoriController::class); // Add this line for categories
 
-// Additional route for generating surat
+
+Route::get('/kategori/export-pdf', [KategoriController::class, 'exportPdf'])->name('kategori.exportPdf');
 Route::get('/generate-surat', [LetterController::class, 'generateSurat'])->name('letters.generateSurat');
-
-// Custom route for creating a user (optional, since resource already covers it)
 Route::post("/users/create", [UserController::class, 'store'])->name('users.store');
-
-// Explicit route for editing user
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-
-// Route to update user
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 
 // Authentication routes

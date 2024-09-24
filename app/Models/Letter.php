@@ -10,7 +10,7 @@ class Letter extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',        //
+        'title',
         'recipient',
         'content',
         'generated_at',
