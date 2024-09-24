@@ -54,7 +54,7 @@ class TemplateController extends Controller
      */
     public function show(Template $template)
     {
-        return view('templates.show', compact('template'));
+        return view('templates.surat', compact('template'));
     }
 
     /**

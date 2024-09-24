@@ -28,13 +28,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard.index');
 
-// Resource routes for users, templates, letters, generated_letters, and categories
 Route::resource('users', UserController::class);
 Route::resource('templates', TemplateController::class);
 Route::resource('letters', LetterController::class);
 Route::resource('generated_letters', GeneratedLetterController::class);
-Route::resource('kategori', KategoriController::class); // Add this line for categories
-
+Route::resource('kategori', KategoriController::class);
 
 Route::get('/kategori/export-pdf', [KategoriController::class, 'exportPdf'])->name('kategori.exportPdf');
 Route::get('/generate-surat', [LetterController::class, 'generateSurat'])->name('letters.generateSurat');
@@ -42,10 +40,8 @@ Route::post("/users/create", [UserController::class, 'store'])->name('users.stor
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 
-// Authentication routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);

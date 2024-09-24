@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
 @section('content')
     <div class="container">
@@ -15,7 +15,7 @@
                 <input type="text" class="form-control" id="nama" name="nama" required>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-2">
                 <label for="deskripsi">Deskripsi</label>
                 <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
             </div>

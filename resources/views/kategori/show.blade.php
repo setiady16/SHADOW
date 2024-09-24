@@ -1,4 +1,4 @@
-<!-- resources/views/kategori/show.blade.php -->
+<!-- resources/views/kategori/surat.blade.php -->
 
 @extends('layouts.app') <!-- Ganti dengan layout yang kamu gunakan -->
 

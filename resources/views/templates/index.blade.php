@@ -12,7 +12,7 @@
                         <table class="table table-striped table-hover text-center align-middle">
                             <thead class="bg-light">
                                 <tr>
-                                    <th>ID</th>
+{{--                                    <th>ID</th>--}}
                                     <th>Name</th>
                                     <th>Actions</th>
                                 </tr>
@@ -20,7 +20,7 @@
                                 <tbody>
                                 @foreach($templates as $template)
                                     <tr>
-                                        <td>{{ $template->id }}</td>
+{{--                                        <td>{{ $template->id }}</td>--}}
                                         <td>{{ $template->name }}</td>
                                         <td>
                                             <a href="{{ route('templates.edit', $template->id) }}" class="btn btn-warning">Edit</a>
@@ -29,6 +29,7 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
+                                            <a href="{{--{{route('templates.show')}}--}}" class="btn btn-secondary">Lihat</a>
                                         </td>
                                     </tr>
                                 @endforeach
