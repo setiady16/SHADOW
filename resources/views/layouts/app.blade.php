@@ -8,6 +8,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Optional Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Warna latar belakang */
+            /* Jika ingin menggunakan gambar latar belakang, uncomment baris berikut dan sesuaikan */
+            /* background-image: url('{{ asset('images/background.jpg') }}'); */
+            /* background-size: cover; */
+            /* background-position: center; */
+        }
+
+        footer {
+            background-color: #343a40; /* Warna latar belakang footer */
+            color: white; /* Warna teks di footer */
+        }
+    </style>
 </head>
 <body>
 <!-- Navbar -->
@@ -22,22 +36,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-{{--                    <a class="nav-link" href="{{ route('templates.index') }}">Templates</a>--}}
+                    {{--                    <a class="nav-link" href="{{ route('templates.index') }}">Templates</a> --}}
                 </li>
                 <li class="nav-item">
-{{--                    <a class="nav-link" href="{{ route('generated_letters.index') }}">Generated Letters</a>--}}
+                    {{--                    <a class="nav-link" href="{{ route('generated_letters.index') }}">Generated Letters</a> --}}
                 </li>
                 <li class="nav-item">
-{{--                    <a class="nav-link" href="{{ route('users.index') }}">Users</a>--}}
+                    {{--                    <a class="nav-link" href="{{ route('users.index') }}">Users</a> --}}
                 </li>
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-{{--                        <a class="nav-link" href="{{ route('login') }}">Login</a>--}}
+                        {{--                        <a class="nav-link" href="{{ route('login') }}">Login</a> --}}
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-{{--                            <a class="nav-link" href="{{ route('register') }}">Register</a>--}}
+                            {{--                            <a class="nav-link" href="{{ route('register') }}">Register</a> --}}
                         </li>
                     @endif
                 @else
