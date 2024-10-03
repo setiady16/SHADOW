@@ -38,16 +38,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // Create a new user
+        // Validasi data yang dimasukkan
+        $request->validate([
+            'username' => 'required|string|max:255|unique:users,username',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'password' => 'required|string|min:8',
+        ]);
+
+        // Buat user baru jika validasi lolos
         User::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => $request->role ?? 'user',
+            'role' => $request->role ?? 'user', // Default role is 'user' if not provided
         ]);
 
-        // Redirect to the index page with a success message
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+        // Redirect setelah sukses
+        return redirect()->route('users.index')->with('success', 'User created successfully!');
     }
 
     /**
@@ -81,23 +88,26 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // Validate the request
+        // Validasi permintaan
         $request->validate([
-            'username' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username,' . $user->id,
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:3',
-            'role' => 'nullable|string'
+            'role' => 'nullable|string',
+        ], [
+            'username.unique' => 'Username sudah digunakan. Silakan pilih username lain.',
+            'email.unique' => 'Email sudah terdaftar. Silakan gunakan email lain.',
         ]);
 
-        // Update the user
+        // Perbarui pengguna
         $user->update([
             'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password ? Hash::make($request->password) : $user->password,
             'role' => $request->role ?? $user->role,
         ]);
-        $user->save();
-        // Redirect to the index page with a success message
+
+        // Redirect ke halaman indeks dengan pesan sukses
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
 

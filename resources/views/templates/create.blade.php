@@ -16,11 +16,13 @@
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter template name" required>
                     </div>
 
-                    <!-- Content -->
                     <div class="mb-3">
-                        <label for="content" class="form-label">Content</label>
-                        <textarea class="form-control" id="content" name="content" rows="5" placeholder="Enter template content" required></textarea>
+                        <label for="content" class="form-label">Content Surat</label>
+                        <textarea name="content" id="content" cols="30" rows="10"></textarea>
+
                     </div>
+
+
 
                     <!-- Buttons -->
                     <div class="d-flex">
@@ -32,3 +34,5 @@
         </div>
     </div>
 @endsection
+
+

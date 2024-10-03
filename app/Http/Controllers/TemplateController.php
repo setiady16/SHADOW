@@ -39,8 +39,8 @@ class TemplateController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'content' => 'required|string',
-        ]);
 
+        ]);
         Template::create($request->all());
 
         return redirect()->route('templates.index')->with('success', 'Template created successfully.');

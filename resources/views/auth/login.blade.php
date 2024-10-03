@@ -14,14 +14,24 @@
             --main-color: #323232;
         }
 
+        /* Style untuk latar belakang di luar halaman */
         body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #2d8cf0, #f0f0f0); /* Background luar halaman */
+        }
+
+        /* Wrapper untuk konten utama */
+        .content {
+            background-color: #fff; /* Warna latar belakang untuk konten login/signup */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .wrapper {
@@ -181,32 +191,35 @@
     </style>
 </head>
 <body>
-<div class="wrapper">
-    <div class="card-side">
-        <span>Log in</span>
-        <label class="switch">
-            <input type="checkbox" class="toggle">
-            <span class="slider"></span>
-        </label>
-        <span>Sign up</span>
-    </div>
-    <div class="flip-card__inner">
-        <div class="flip-card__front">
-            <form class="flip-card__form">
-                <div class="glowing-text">SHADOW</div>
-                <input type="email" class="flip-card__input" placeholder="Email">
-                <input type="password" class="flip-card__input" placeholder="Password">
-                <button class="flip-card__btn">LOGIN</button>
-            </form>
+<!-- Bungkus konten utama dalam elemen content -->
+<div class="content">
+    <div class="wrapper">
+        <div class="card-side">
+            <span>Log in</span>
+            <label class="switch">
+                <input type="checkbox" class="toggle">
+                <span class="slider"></span>
+            </label>
+            <span>Sign up</span>
         </div>
-        <div class="flip-card__back">
-            <form class="flip-card__form">
-                <div class="glowing-text">SHADOW</div>
-                <input type="name" class="flip-card__input" placeholder="Name">
-                <input type="email" class="flip-card__input" placeholder="Email">
-                <input type="password" class="flip-card__input" placeholder="Password">
-                <button class="flip-card__btn">Sign up</button>
-            </form>
+        <div class="flip-card__inner">
+            <div class="flip-card__front">
+                <form class="flip-card__form">
+                    <div class="glowing-text">SHADOW</div>
+                    <input type="email" class="flip-card__input" placeholder="Email">
+                    <input type="password" class="flip-card__input" placeholder="Password">
+                    <button class="flip-card__btn" type="submit">LOGIN</button>
+                </form>
+            </div>
+            <div class="flip-card__back">
+                <form class="flip-card__form">
+                    <div class="glowing-text">SHADOW</div>
+                    <input type="name" class="flip-card__input" placeholder="Name">
+                    <input type="email" class="flip-card__input" placeholder="Email">
+                    <input type="password" class="flip-card__input" placeholder="Password">
+                    <button class="flip-card__btn">Sign up</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

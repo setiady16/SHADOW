@@ -128,4 +128,24 @@ class LetterController extends Controller
         // Memanggil template surat dan mengirim data
         return view('templates.surat', $data);
     }
+
+    /**
+     * Show the letter view with provided data.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showSurat()
+    {
+        // Data yang akan dikirim ke view
+        $data = [
+            'tanggal' => date('d-m-Y'), // Format tanggal saat ini
+            'penerima' => 'Bapak/Ibu Penerima',
+            'isi_surat' => 'Dengan ini kami menginformasikan bahwa...',
+            'pengirim' => 'Nama Pengirim',
+            'barcode' => 'path/to/barcode/image.png', // Ganti dengan path yang sesuai
+        ];
+
+        // Memanggil template surat dan mengirim data
+        return view('surat', $data); // Pastikan view ini sesuai dengan lokasi view surat Anda
+    }
 }

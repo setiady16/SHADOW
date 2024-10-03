@@ -9,15 +9,20 @@ use Barryvdh\DomPDF\Facade\Pdf; // Import DomPDF
 class KategoriController extends Controller
 {
     /**
-     * Menampilkan daftar semua kategori.
+     * Menampilkan daftar semua kategori dengan fitur pencarian dan pengurutan.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Mengambil semua kategori dari database
-        $kategori = Kategori::all();
+        // Mendapatkan kata kunci pencarian dari request
+        $search = $request->input('search');
+
+        // Mengambil kategori berdasarkan pencarian dan mengurutkannya
+        $kategori = Kategori::when($search, function ($query, $search) {
+            return $query->where('nama', 'like', '%' . $search . '%');
+        })->orderBy('nama', 'asc')->get();
 
         // Mengembalikan view dengan data kategori
-        return view('kategori.index', compact('kategori'));
+        return view('kategori.index', compact('kategori', 'search'));
     }
 
     /**
