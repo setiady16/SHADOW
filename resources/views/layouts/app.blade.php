@@ -1,63 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Aplikasi Generate Surat - Buat surat resmi dengan mudah dan cepat" />
+    <meta name="author" content="Your Company Name" />
+    <title>Aplikasi Generate Surat - Buat Surat dengan Mudah</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('assets-fe/favicon.ico')}}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets-fe/css/styles.css')}}" rel="stylesheet" />
+</head>
+<body id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">Aplikasi Generate Surat</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#features">Fitur</a></li>
+                <li class="nav-item"><a class="nav-link" href="#templates">Template</a></li>
+                <li class="nav-item"><a class="nav-link" href="#how-it-works">Cara Kerja</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('login.index')}}">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="utf-8">
-    <title>Start Bootstrap</title>
-    <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="msapplication-TileColor" content="#dd3d31">
-    <meta name="theme-color" content="#dd3d31">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <!-- Preload in script-->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://assets.startbootstrap.com/img/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://assets.startbootstrap.com/img/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://assets.startbootstrap.com/img/icons/favicon-16x16.png">
-    <link rel="mask-icon" href="https://assets.startbootstrap.com/img/icons/safari-pinned-tab.svg" color="#dd3d31">
-    <link rel="manifest" href="manifest.webmanifest">
-    <meta name="description" content="Start Bootstrap develops free to download, open source Bootstrap 5 themes, templates, and snippets and creates guides and tutorials to help you learn more about designing and developing with Bootstrap." data-dynamic="true">
-    <meta name="og:description" content="Start Bootstrap develops free to download, open source Bootstrap 5 themes, templates, and snippets and creates guides and tutorials to help you learn more about designing and developing with Bootstrap." data-dynamic="true">
-    <meta name="og:image" content="https://assets.startbootstrap.com/img/meta/og-image-start-bootstrap.png" data-dynamic="true">
-    <meta name="og:image:alt" content="Start Bootstrap - website themes and templates built using the Bootstrap framework" data-dynamic="true">
-    <meta name="og:image:height" content="630" data-dynamic="true">
-    <meta name="og:image:secure_url" content="https://assets.startbootstrap.com/img/meta/og-image-start-bootstrap.png" data-dynamic="true">
-    <meta name="og:image:width" content="1200" data-dynamic="true">
-    <meta name="og:locale" content="en_US" data-dynamic="true">
-    <meta name="og:site_name" content="Start Bootstrap" data-dynamic="true">
-    <meta name="og:title" content="Free Bootstrap Themes, Templates, Snippets, and Guides" data-dynamic="true">
-    <meta name="og:type" content="website" data-dynamic="true">
-    <meta name="og:url" content="https://startbootstrap.com" data-dynamic="true">
-    <meta name="twitter:card" content="summary_large_image" data-dynamic="true">
-    <meta name="twitter:description" content="Start Bootstrap develops free to download, open source Bootstrap 5 themes, templates, and snippets and creates guides and tutorials to help you learn more about designing and developing with Bootstrap." data-dynamic="true">
-    <meta name="twitter:image" content="https://assets.startbootstrap.com/img/meta/twitter-image-start-bootstrap.png" data-dynamic="true">
-    <meta name="twitter:site" content="@SBootstrap" data-dynamic="true">
-    <meta name="twitter:title" content="Free Bootstrap Themes, Templates, Snippets, and Guides" data-dynamic="true">
-    <script async="" src="/app-scripts/preload.js"></script>
-    <script>
-        setTimeout(() => {
-            !(function (f, b, e, v, n, t, s) {
-                if (f.fbq) return;
-                n = f.fbq = function () {
-                    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-                };
-                if (!f._fbq) f._fbq = n;
-                n.push = n;
-                n.loaded = !0;
-                n.version = '2.0';
-                n.queue = [];
-                t = b.createElement(e);
-                t.async = !0;
-                t.src = v;
-                s = b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t, s);
-            })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-            fbq.disablePushState;
-            fbq('init', '470997813790692');
-        }, 2000);
-    </script>
-    <noscript><img height="1" width="1" style="display: none" src="https://www.facebook.com/tr?id=470997813790692&ev=PageView&noscript=1" /></noscript>
-    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5287323383309901" crossorigin="anonymous"></script>
-    <style>@charset "UTF-8";:root{--bs-gray:#69707a;--bs-gray-dark:#363d47;--bs-gray-100:#f2f6fc;--bs-gray-200:#e0e5ec;--bs-gray-300:#d4dae3;--bs-gray-400:#c5ccd6;--bs-gray-500:#a7aeb8;--bs-gray-600:#69707a;--bs-gray-700:#4a515b;--bs-gray-800:#363d47;--bs-gray-900:#212832;--bs-primary:#dc392d;--bs-secondary:#e0e5ec;--bs-success:#00ac69;--bs-info:#00cfd5;--bs-warning:#f4a100;--bs-danger:#e81500;--bs-light:#f2f6fc;--bs-dark:#212832;--bs-black:#000;--bs-white:#fff;--bs-red:#dc392d;--bs-orange:#f76400;--bs-yellow:#f4a100;--bs-green:#00ac69;--bs-teal:#00ba94;--bs-cyan:#00cfd5;--bs-blue:#0061f2;--bs-indigo:#5800e8;--bs-purple:#6900c7;--bs-pink:#e30059;--bs-red-soft:#f0e3e7;--bs-orange-soft:#f3e7e3;--bs-yellow-soft:#f2eee3;--bs-green-soft:#daefed;--bs-teal-soft:#daf0f2;--bs-cyan-soft:#daf2f8;--bs-blue-soft:#dae7fb;--bs-indigo-soft:#e3ddfa;--bs-purple-soft:#e4ddf7;--bs-pink-soft:#f1ddec;--bs-primary-soft:#f0e3e7;--bs-secondary-soft:#f0f4fa;--bs-success-soft:#daefed;--bs-info-soft:#daf2f8;--bs-warning-soft:#f2eee3;--bs-danger-soft:#f1e0e3;--bs-primary-rgb:220, 57, 45;--bs-secondary-rgb:224, 229, 236;--bs-success-rgb:0, 172, 105;--bs-info-rgb:0, 207, 213;--bs-warning-rgb:244, 161, 0;--bs-danger-rgb:232, 21, 0;--bs-light-rgb:242, 246, 252;--bs-dark-rgb:33, 40, 50;--bs-red-rgb:220, 57, 45;--bs-orange-rgb:247, 100, 0;--bs-yellow-rgb:244, 161, 0;--bs-green-rgb:0, 172, 105;--bs-teal-rgb:0, 186, 148;--bs-cyan-rgb:0, 207, 213;--bs-blue-rgb:0, 97, 242;--bs-indigo-rgb:88, 0, 232;--bs-purple-rgb:105, 0, 199;--bs-pink-rgb:227, 0, 89;--bs-red-soft-rgb:240, 227, 231;--bs-orange-soft-rgb:243, 231, 227;--bs-yellow-soft-rgb:242, 238, 227;--bs-green-soft-rgb:218, 239, 237;--bs-teal-soft-rgb:218, 240, 242;--bs-cyan-soft-rgb:218, 242, 248;--bs-blue-soft-rgb:218, 231, 251;--bs-indigo-soft-rgb:227, 221, 250;--bs-purple-soft-rgb:228, 221, 247;--bs-pink-soft-rgb:241, 221, 236;--bs-primary-soft-rgb:240, 227, 231;--bs-secondary-soft-rgb:240, 244, 250;--bs-success-soft-rgb:218, 239, 237;--bs-info-soft-rgb:218, 242, 248;--bs-warning-soft-rgb:242, 238, 227;--bs-danger-soft-rgb:241, 224, 227;--bs-white-rgb:255, 255, 255;--bs-black-rgb:0, 0, 0;--bs-body-color-rgb:105, 112, 122;--bs-body-bg-rgb:255, 255, 255;--bs-font-sans-serif:"Metropolis", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--bs-font-monospace:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));--bs-body-font-family:Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;--bs-body-font-size:1rem;--bs-body-font-weight:400;--bs-body-line-height:1.5;--bs-body-color:#69707a;--bs-body-bg:#fff;--bs-border-width:1px;--bs-border-style:solid;--bs-border-color:#e0e5ec;--bs-border-color-translucent:rgba(0, 0, 0, .175);--bs-border-radius:.35rem;--bs-border-radius-sm:.25rem;--bs-border-radius-lg:.5rem;--bs-border-radius-xl:1rem;--bs-border-radius-2xl:2rem;--bs-border-radius-pill:50rem;--bs-link-color:#dc392d;--bs-link-hover-color:#b02e24;--bs-code-color:#e30059;--bs-highlight-bg:#fdeccc}*,*:before,*:after{box-sizing:border-box}@media (prefers-reduced-motion: no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:var(--bs-body-font-family);font-size:var(--bs-body-font-size);font-weight:var(--bs-body-font-weight);line-height:var(--bs-body-line-height);color:var(--bs-body-color);text-align:var(--bs-body-text-align);background-color:var(--bs-body-bg);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{height:100%}body{overflow-x:hidden}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-Thin.otf);font-weight:100;font-style:normal}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-ThinItalic.otf);font-weight:100;font-style:italic}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-ExtraLight.otf);font-weight:200;font-style:normal}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-ExtraLightItalic.otf);font-weight:200;font-style:italic}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-Light.otf);font-weight:300;font-style:normal}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-LightItalic.otf);font-weight:300;font-style:italic}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-Regular.otf);font-weight:400;font-style:normal}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-RegularItalic.otf);font-weight:400;font-style:italic}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-Medium.otf);font-weight:500;font-style:normal}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-MediumItalic.otf);font-weight:500;font-style:italic}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-SemiBold.otf);font-weight:600;font-style:normal}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-SemiBoldItalic.otf);font-weight:600;font-style:italic}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-Bold.otf);font-weight:700;font-style:normal}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-BoldItalic.otf);font-weight:700;font-style:italic}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-ExtraBold.otf);font-weight:800;font-style:normal}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-ExtraBoldItalic.otf);font-weight:800;font-style:italic}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-Black.otf);font-weight:800;font-style:normal}@font-face{font-family:Metropolis;src:url(/assets/fonts/metropolis/Metropolis-BlackItalic.otf);font-weight:800;font-style:italic}:root{--litepicker-month-header-color:#4a515b;--litepicker-button-prev-month-color:#69707a;--litepicker-button-next-month-color:#69707a;--litepicker-button-prev-month-color-hover:#212832;--litepicker-button-next-month-color-hover:#212832;--litepicker-month-weekday-color:#69707a;--litepicker-month-week-number-color:#69707a;--litepicker-day-width:34px;--litepicker-day-color:#363d47;--litepicker-day-color-hover:#dc392d;--litepicker-is-today-color:#69707a;--litepicker-is-in-range-color:rgba(220, 57, 45, .15);--litepicker-is-start-color:#fff;--litepicker-is-start-color-bg:#dc392d;--litepicker-is-end-color:#fff;--litepicker-is-end-color-bg:#dc392d;--litepicker-button-apply-color-bg:#dc392d;--litepicker-button-reset-color-hover:#dc392d;--litepicker-highlighted-day-color:#363d47;--litepicker-highlighted-day-color-bg:rgba(220, 57, 45, .15)}</style><link rel="stylesheet" href="styles.19e555e2fc527962.css" crossorigin="anonymous" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.19e555e2fc527962.css"></noscript></head>
-<body>
-<app-root></app-root>
-<script src="runtime.78fe65772c8aff3e.js" type="module" crossorigin="anonymous"></script><script src="polyfills.f3824fe6dc0460ae.js" type="module" crossorigin="anonymous"></script><script src="scripts.cd816875f3dc91fb.js" defer crossorigin="anonymous"></script><script src="main.6700dedd9b90aef0.js" type="module" crossorigin="anonymous"></script>
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end">
+                <h1 class="text-white font-weight-bold">Buat Surat Resmi dengan Mudah dan Cepat</h1>
+                <hr class="divider" />
+            </div>
+            <div class="col-lg-8 align-self-baseline">
+                <p class="text-white-75 mb-5">Aplikasi Generate Surat membantu Anda membuat surat resmi dan profesional dalam hitungan menit. Pilih template, isi data, dan surat Anda siap!</p>
+                <a class="btn btn-primary btn-xl" href="#features">Mulai Sekarang</a>
+            </div>
+        </div>
+    </div>
+</header>
 
-</body></html>
+<!-- Features Section-->
+<section class="page-section bg-light" id="features">
+    <div class="container px-4 px-lg-5">
+        <h2 class="text-center text-dark mt-0">Fitur Unggulan</h2>
+        <hr class="divider divider-light" />
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi-file-earmark-text fs-1 text-dark"></i></div>
+                    <h3 class="h4 mb-2 text-dark">Beragam Template</h3>
+                    <p class="text-dark-50 mb-0">Pilihan template surat untuk berbagai keperluan</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi-pencil-square fs-1 text-dark"></i></div>
+                    <h3 class="h4 mb-2 text-dark">Mudah Disesuaikan</h3>
+                    <p class="text-dark-50 mb-0">Edit dan sesuaikan surat sesuai kebutuhan Anda</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi-cloud-download fs-1 text-dark"></i></div>
+                    <h3 class="h4 mb-2 text-dark">Ekspor PDF</h3>
+                    <p class="text-dark-50 mb-0">Unduh surat dalam format PDF siap cetak</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi-shield-check fs-1 text-dark"></i></div>
+                    <h3 class="h4 mb-2 text-dark">Aman & Terpercaya</h3>
+                    <p class="text-dark-50 mb-0">Data Anda selalu aman dan terlindungi</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Templates Section -->
+<section class="page-section" id="templates">
+    <div class="container px-4 px-lg-5">
+        <h2 class="text-center mt-0">Template Surat</h2>
+        <hr class="divider" />
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="mt-5">
+                    <img src="{{asset('assets-fe/img/templates/surat-lamaran.jpg')}}" alt="Surat Lamaran Kerja" class="img-fluid rounded mb-3">
+                    <h3 class="h4 mb-2">Surat Lamaran Kerja</h3>
+                    <p class="text-muted mb-0">Template profesional untuk melamar pekerjaan</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="mt-5">
+                    <img src="{{asset('assets-fe/img/templates/surat-resmi.jpg')}}" alt="Surat Resmi" class="img-fluid rounded mb-3">
+                    <h3 class="h4 mb-2">Surat Resmi</h3>
+                    <p class="text-muted mb-0">Format standar untuk surat resmi instansi</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="mt-5">
+                    <img src="{{asset('assets-fe/img/templates/surat-pribadi.jpg')}}" alt="Surat Pribadi" class="img-fluid rounded mb-3">
+                    <h3 class="h4 mb-2">Surat Pribadi</h3>
+                    <p class="text-muted mb-0">Template surat untuk keperluan pribadi</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="page-section bg-secondary text-white" id="how-it-works">
+    <div class="container px-4 px-lg-5">
+        <h2 class="text-center mt-0">Cara Kerja</h2>
+        <hr class="divider divider-light" />
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item bg-transparent text-white border-0">Pilih template surat yang sesuai dengan kebutuhan Anda</li>
+                    <li class="list-group-item bg-transparent text-white border-0">Isi informasi yang diperlukan pada form yang tersedia</li>
+                    <li class="list-group-item bg-transparent text-white border-0">Preview surat dan lakukan penyesuaian jika diperlukan</li>
+                    <li class="list-group-item bg-transparent text-white border-0">Unduh surat dalam format PDF siap cetak</li>
+                </ol>
+                <a class="btn btn-light btn-xl mt-4" href="#templates">Coba Sekarang</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer-->
+<footer class="bg-light py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="small text-center text-muted">
+            Copyright &copy; 2023 - Aplikasi Generate Surat
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="{{asset('assets-fe/js/scripts.js')}}"></script>
+</body>
+</html>

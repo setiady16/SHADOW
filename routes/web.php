@@ -19,9 +19,9 @@ use App\Http\Controllers\ProfileController;
 */
 
 // Default route to welcome page
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+//Route::get('/index', function () {
+//    return view('index');
+//})->name('index');
 
 // Dashboard route
 Route::get('/dashboard', function () {
@@ -57,4 +57,4 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');
 
 //frontend
-Route::get('/frontend',[\App\Http\Controllers\FrontEndController::class,'index'])->name('frontend.index');
+Route::get('/',[\App\Http\Controllers\FrontEndController::class,'index'])->name('frontend.index');
