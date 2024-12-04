@@ -22,10 +22,14 @@
                         <label for="content" class="form-label">Konten Template</label>
                         <textarea class="form-control" id="content" name="content" rows="5" required>{{ $template->content }}</textarea>
                     </div>
-
                     <!-- Buttons -->
                     <div class="d-flex">
+                        @can('user')
+                            <a href="{{ route('templates.download', $template->id) }}" class="btn btn-success me-2">Download</a>
+                        @endcan
+                        @can('admin')
                         <button type="submit" class="btn btn-success me-2">Update</button>
+                            @endcan
                         <a href="{{ route('templates.index') }}" class="btn btn-outline-secondary">Kembali</a>
                     </div>
                 </form>

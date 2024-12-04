@@ -5,8 +5,14 @@
         <div class="container mt-5">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
-                    <h1>Templates List</h1>
+                    @if (auth()->check() && auth()->user()->role === 'admin')
+                        <h1>Generate Letters</h1>
+                    @else
+                        <h1>Templates List</h1>
+                    @endif
+                    @can('admin')
                     <a href="{{ route('templates.create') }}" class="btn btn-light float-right">Add New Template</a>
+                        @endcan
                 </div>
                     <div class="card-body">
                         <table class="table table-striped table-hover text-center align-middle">
@@ -24,12 +30,14 @@
                                         <td>{{ $template->name }}</td>
                                         <td>
                                             <a href="{{ route('templates.edit', $template->id) }}" class="btn btn-warning">Edit</a>
+                                            @can('admin')
                                             <form action="{{ route('templates.destroy', $template->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
-                                            <a href="{{--{{route('templates.show')}}--}}" class="btn btn-secondary">Lihat</a>
+                                            @endcan
+
                                         </td>
                                     </tr>
                                 @endforeach

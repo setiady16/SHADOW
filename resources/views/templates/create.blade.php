@@ -19,9 +19,7 @@
                     <div class="mb-3">
                         <label for="content" class="form-label">Content Surat</label>
                         <textarea name="content" id="content" cols="30" rows="10"></textarea>
-
                     </div>
-
 
 
                     <!-- Buttons -->

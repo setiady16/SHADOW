@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TemplateController;
@@ -24,9 +25,9 @@ use App\Http\Controllers\ProfileController;
 //})->name('index');
 
 // Dashboard route
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard.index');
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+});
 
 // Resource routes for users, templates, letters, generated_letters, kategori
 Route::resource('users', UserController::class);
@@ -34,6 +35,8 @@ Route::resource('templates', TemplateController::class);
 Route::resource('letters', LetterController::class);
 Route::resource('generated_letters', GeneratedLetterController::class);
 Route::resource('kategori', KategoriController::class);
+
+Route::get('/templates/download/{id}', [TemplateController::class, 'download'])->name('templates.download');
 
 // Additional kategori routes
 Route::get('/kategori/export-pdf', [KategoriController::class, 'exportPdf'])->name('kategori.exportPdf');
@@ -47,12 +50,20 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.e
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 
 // Authentication routes (login, register, logout)
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.index');
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.index');
-Route::post('/register', [AuthController::class, 'register']);
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'index'])->name('auth.index');
+    Route::post('/login', [AuthController::class, 'verify'])->name('auth.verify');
+    Route::get('/register', [AuthController::class, 'register'])->name('register.index');
+    Route::post('/register', [AuthController::class, 'registerProceed'])->name('register.verify');
+    Route::get('/register/activation/{token}', [AuthController::class, 'registerVerify']);
+    Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('password.request');
+    Route::post('/forgot-password', [AuthController::class, 'resetPasswordEmail'])->name('password.email');
+    Route::get('/password/confirmation/{token}', [AuthController::class, 'showResetPasswordConfirmation'])->name('password.confirmation');
+    Route::post('/password/update/{token}', [AuthController::class, 'updatePassword'])->name('password.update');
+    Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
+});
 
+Route::get('/logout',[AuthController::class,'logout'])->name('auth.logout');
 // Profile route
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');
 

@@ -2,31 +2,49 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail // Jika Anda ingin mendukung verifikasi email
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
-        'username', 'email', 'password', 'role',
+        'name',
+        'email',
+        'password',
+        'name',
+        'role'
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
-    // Relasi ke model Letter
-    public function letters()
+    protected $casts = [
+        'email_verified_at' => 'datetime', // Menyimpan waktu verifikasi email
+    ];
+
+    // Mutator untuk hash password sebelum menyimpan ke database
+    public function setPasswordAttribute($password)
     {
-        return $this->hasMany(Letter::class);
+        $this->attributes['password'] = Hash::make($password);
     }
 
-    // Relasi ke model Template (jika diperlukan)
-    public function templates()
+    // Contoh relasi (jika diperlukan)
+    public function posts()
     {
-        return $this->hasMany(Template::class);
+        return $this->hasMany(Post::class); // Ganti Post dengan nama model yang relevan
+    }
+
+    // Metode untuk mendapatkan nama lengkap (jika perlu)
+    public function fullName()
+    {
+        return $this->name; // Anda bisa menambahkan properti lain jika diperlukan
     }
 }

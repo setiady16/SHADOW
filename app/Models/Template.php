@@ -14,4 +14,12 @@ class Template extends Model
         'name',
         'content',
     ];
+
+    /**
+     * Relasi one-to-many dengan model LetterOutput
+     */
+    public function letterOutputs()
+    {
+        return $this->hasMany(LetterOutput::class);
+    }
 }

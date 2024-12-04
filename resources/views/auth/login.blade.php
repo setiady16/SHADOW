@@ -204,10 +204,19 @@
         </div>
         <div class="flip-card__inner">
             <div class="flip-card__front">
-                <form class="flip-card__form">
+                {{--                $2y$10$/.ROL883UpvPXPDkm1QoFO/KdjUEai9v7GpElLjM/V7T9MlBgfAou--}}
+                <form class="flip-card__form" method="POST">
+                    @csrf
+                    @if (session('pesan'))
+                        <div class="alert alert-{{ session('pesan')[0] }}" role="alert">
+                            {{ session('pesan')[1] }}
+                        </div>
+                    @endif
+
+
                     <div class="glowing-text">SHADOW</div>
-                    <input type="email" class="flip-card__input" placeholder="Email">
-                    <input type="password" class="flip-card__input" placeholder="Password">
+                    <input type="email" name="email" class="flip-card__input" placeholder="Email">
+                    <input type="password" name="password" class="flip-card__input" placeholder="Password">
                     <button class="flip-card__btn" type="submit">LOGIN</button>
                 </form>
             </div>

@@ -4,39 +4,45 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         // Menambahkan user admin
         User::create([
-            'username' => 'admin',
+            'name' => 'Admin',
             'email' => 'admin@example.com',
-            'password' => Hash::make('password123'),
+            'password' => 'admin123', // Mengenkripsi password
             'role' => 'admin',
+            'is_active' => 1, // Akun diaktifkan
+        ]);
+
+        // Menambahkan user admin lainnya
+        User::create([
+            'name' => 'Super Admin',
+            'email' => 'superadmin@example.com',
+            'password' => 'superadmin123',
+            'role' => 'admin',
+            'is_active' => 1,
         ]);
 
         // Menambahkan user biasa
         User::create([
-            'username' => 'user1',
+            'name' => 'User Satu',
             'email' => 'user1@example.com',
-            'password' => Hash::make('password123'),
+            'password' => 'user123',
             'role' => 'user',
+            'is_active' => 1,
         ]);
 
         // Menambahkan user lainnya
         User::create([
-            'username' => 'user2',
+            'name' => 'User Dua',
             'email' => 'user2@example.com',
-            'password' => Hash::make('password123'),
+            'password' => 'user234',
             'role' => 'user',
+            'is_active' => 1,
         ]);
     }
 }

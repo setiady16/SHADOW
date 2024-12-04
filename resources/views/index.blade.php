@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/apple-icon.png')}}">
     <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.png')}}">
     <title>
-        Argon Dashboard 2 by Creative Tim
+        Aplikasi Generate Surat
     </title>
     <!-- Fonts and icons -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -53,17 +53,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('templates.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-app text-success text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Template</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('generated_letters.index') }}">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-book-bookmark text-info text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Generate Letters</span>
+                    @if (auth()->check() && auth()->user()->role === 'admin')
+                        <span class="nav-link-text ms-1">Generate Letters</span>
+                    @else
+                        <span class="nav-link-text ms-1">Template Surat</span>
+                    @endif
                 </a>
             </li>
             <li class="nav-item">
@@ -86,7 +82,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('login.index') }}">
+                <a class="nav-link" href="{{ route('auth.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
                     </div>

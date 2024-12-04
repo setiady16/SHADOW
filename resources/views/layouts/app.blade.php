@@ -23,7 +23,7 @@
                 <li class="nav-item"><a class="nav-link" href="#features">Fitur</a></li>
                 <li class="nav-item"><a class="nav-link" href="#templates">Template</a></li>
                 <li class="nav-item"><a class="nav-link" href="#how-it-works">Cara Kerja</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('login.index')}}">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('auth.index')}}">Login</a></li>
             </ul>
         </div>
     </div>
