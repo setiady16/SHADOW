@@ -25,7 +25,7 @@
                     <!-- Buttons -->
                     <div class="d-flex">
                         @can('user')
-                            <a href="{{ route('templates.download', $template->id) }}" class="btn btn-success me-2">Download</a>
+                            <a href="javascript:void(0);" class="btn btn-success me-2" onclick="downloadPDF()">Download</a>
                         @endcan
                         @can('admin')
                         <button type="submit" class="btn btn-success me-2">Update</button>
@@ -36,4 +36,11 @@
             </div>
         </div>
     </div>
+    <script>
+        function downloadPDF() {
+            var content = $('#content').val(); // Assuming Summernote is initialized on the textarea with id 'content'
+            var url = "{{ route('templates.download', $template->id) }}?content=" + encodeURIComponent(content);
+            window.open(url, '_blank');
+        }
+    </script>
 @endsection

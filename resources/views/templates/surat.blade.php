@@ -17,7 +17,7 @@
 </head>
 <body>
 <div>
-    {!! $template->content !!}
+    {!! $content !!} <!-- Use the content passed from the download method -->
 </div>
 </body>
 </html>

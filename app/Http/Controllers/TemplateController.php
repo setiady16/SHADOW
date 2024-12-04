@@ -79,7 +79,7 @@ class TemplateController extends Controller
     /**
      * Download a template as a PDF.
      */
-    public function download($id)
+    public function download(Request $request, $id)
     {
         // Temukan template berdasarkan ID
         $template = Template::findOrFail($id);
@@ -87,13 +87,16 @@ class TemplateController extends Controller
         // Ambil LetterOutputs terkait
         $letterOutputs = $template->letterOutputs;
 
+        // Get the content from the request if available
+        $content = $request->input('content', $template->content);
+
         // Inisialisasi DomPDF
         $options = new Options();
         $options->set('defaultFont', 'Courier');
         $dompdf = new Dompdf($options);
 
         // Load HTML dari konten template dan LetterOutputs
-        $html = view('templates.surat', compact('template', 'letterOutputs'))->render();
+        $html = view('templates.surat', compact('template', 'letterOutputs', 'content'))->render();
 
         // Load HTML ke DomPDF
         $dompdf->loadHtml($html);
