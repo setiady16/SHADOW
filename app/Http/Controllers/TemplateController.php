@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LetterOutput;
 use App\Models\Template;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Illuminate\Http\Request;
+use Illuminate\Support\HtmlString;
+use Carbon\Carbon;
 
 class TemplateController extends Controller
 {
@@ -41,6 +44,7 @@ class TemplateController extends Controller
         return redirect()->route('templates.index')->with('success', 'Template created successfully.');
     }
 
+
     /**
      * Display the specified resource.
      */
@@ -58,8 +62,34 @@ class TemplateController extends Controller
      */
     public function edit(Template $template)
     {
-        return view('templates.edit', compact('template'));
+        // Ambil nomor surat terakhir dari letter_outputs untuk template ini
+        $lastLetterOutput = LetterOutput::count();
+        $letterTemplate = Template::whereId($template->id)->first();
+        $letterContent = $letterTemplate->content;
+
+
+        // Jika tidak ada LetterOutput, set nomor surat pertama (1)
+        $letterNumber = $lastLetterOutput != 0 ? $lastLetterOutput + 1 : 1;
+
+        // Format nomor surat sesuai aturan (misalnya PSG/2024/0001)
+        $formattedLetterNumber = now()->year . '/' . str_pad($letterNumber, 4, '0', STR_PAD_LEFT);
+        $htmlString = $letterContent;
+
+        $currentDate = Carbon::now();
+
+        $formattedDate = $currentDate->format('j F Y');
+
+        $htmlString = str_replace('{{tanggal}}', $formattedDate, $htmlString );
+        $htmlString = str_replace('{{kode}}', $formattedLetterNumber, $htmlString);
+        $htmlString = str_replace('{{penerima}}', 'Dimas', $htmlString);
+        $htmlString = str_replace('{{hari}}', 'Setiap Hari Kamis', $htmlString);
+        $htmlString = str_replace('{{waktu}}', '18.00 WIB', $htmlString);
+
+
+        return view('templates.edit', ["number" => $formattedLetterNumber, "penerima" => "Dimas", "template" => $letterTemplate, "content" => new HtmlString($htmlString)]);
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -84,19 +114,28 @@ class TemplateController extends Controller
         // Temukan template berdasarkan ID
         $template = Template::findOrFail($id);
 
-        // Ambil LetterOutputs terkait
-        $letterOutputs = $template->letterOutputs;
+        // Ambil nomor surat terakhir dari letter_outputs untuk template ini
+        $lastLetterOutput = $template->letterOutputs()->latest('letter_number')->first();
 
-        // Get the content from the request if available
-        $content = $request->input('content', $template->content);
+        // Tentukan nomor surat baru
+        $letterNumber = $lastLetterOutput ? $lastLetterOutput->letter_number + 1 : 1;
+
+        // Simpan LetterOutput baru dengan nomor surat yang telah ditentukan
+        $letterOutput = $template->letterOutputs()->create([
+            'letter_number' => $letterNumber,
+            'content' => $request->input('content', $template->content),
+        ]);
+
+        // Format nomor surat sesuai aturan (misalnya PSG/2024/0001)
+        $formattedLetterNumber = now()->year . '/' . str_pad($letterNumber, 4, '0', STR_PAD_LEFT);
 
         // Inisialisasi DomPDF
         $options = new Options();
         $options->set('defaultFont', 'Courier');
         $dompdf = new Dompdf($options);
-
+        $content = request()->get('content');
         // Load HTML dari konten template dan LetterOutputs
-        $html = view('templates.surat', compact('template', 'letterOutputs', 'content'))->render();
+        $html = view('templates.surat', compact('template', 'content','letterOutput', 'formattedLetterNumber'))->render();
 
         // Load HTML ke DomPDF
         $dompdf->loadHtml($html);
@@ -110,6 +149,8 @@ class TemplateController extends Controller
         // Output PDF ke browser
         return $dompdf->stream($template->name . '.pdf', ['Attachment' => true]);
     }
+
+
 
     /**
      * Remove the specified resource from storage.

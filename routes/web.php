@@ -36,6 +36,8 @@ Route::resource('letters', LetterController::class);
 Route::resource('generated_letters', GeneratedLetterController::class);
 Route::resource('kategori', KategoriController::class);
 
+Route::get("/test/template", [TemplateController::class, 'testTemplate']);
+
 Route::get('/templates/download/{id}', [TemplateController::class, 'download'])->name('templates.download');
 
 // Additional kategori routes
